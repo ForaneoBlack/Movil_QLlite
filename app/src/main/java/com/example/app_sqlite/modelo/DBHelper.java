@@ -1,5 +1,6 @@
 package com.example.app_sqlite.modelo;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -43,13 +44,45 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     }
-
-    public Cursor query(String sql){
-
-
-        return this.getReadableDatabase().rawQuery(sql,null);
-
+    public Boolean updateuserdata(String nombre,String apellido)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("nombre", nombre);
+        contentValues.put("apellido", apellido);
+        Cursor cursor = DB.rawQuery("Select * from TABLA_PERSONAS where name = ?", new String[]{nombre});
+        if (cursor.getCount() > 0) {
+            long result = DB.update("TABLA_PERSONAS", contentValues, "name=?", new String[]{nombre});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
         }
+    }
+    public Boolean deletedata (String nombre)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from TABLA_PERSONAS where name = ?", new String[]{nombre});
+        if (cursor.getCount() > 0) {
+            long result = DB.delete("TABLA_PERSONAS", "name=?", new String[]{nombre});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public Cursor query(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from Personas", null);
+        return cursor;
+    }
 
 
 

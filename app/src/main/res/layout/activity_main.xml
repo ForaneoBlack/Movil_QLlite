@@ -10,20 +10,21 @@
         android:id="@+id/Crear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="163dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/button1"
+        app:layout_constraintBottom_toTopOf="@+id/btnActualizar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonCorreo" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTelefono" />
 
     <EditText
         android:id="@+id/editTextTextPersonID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="ID"
         android:inputType="textPersonName"
@@ -37,7 +38,7 @@
         android:id="@+id/editTextTextPersonNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="textPersonName"
@@ -48,18 +49,15 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonID" />
 
     <EditText
-        android:id="@+id/editTextTextPersonCorreo"
+        android:id="@+id/txtTelefono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
-        android:layout_marginBottom="62dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Apellido"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/Crear"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonNombre" />
 
@@ -67,24 +65,58 @@
         android:id="@+id/buttonGrabar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="5dp"
         android:text="Guardar"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ver"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Crear"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btnActualizar" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="172dp"
         android:layout_height="156dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/foraneoblack_rgb_icon1" />
+
+    <Button
+        android:id="@+id/btn_eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="Eliminar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ver" />
+
+    <Button
+        android:id="@+id/btn_ver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="Ver datos"
+        app:layout_constraintBottom_toTopOf="@+id/btn_eliminar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGrabar" />
+
+    <Button
+        android:id="@+id/btnActualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Actualizar Datos"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGrabar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Crear" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
