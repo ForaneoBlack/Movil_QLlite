@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/Crear"
+        android:id="@+id/btnCrear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="155dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTelefono" />
 
     <EditText
-        android:id="@+id/editTextTextPersonID"
+        android:id="@+id/txtId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextTextPersonNombre"
+        android:id="@+id/txtNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonID" />
+        app:layout_constraintTop_toBottomOf="@+id/txtId" />
 
     <EditText
         android:id="@+id/txtTelefono"
@@ -54,23 +54,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Apellido"
+        android:hint="Telefono"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonNombre" />
-
-    <Button
-        android:id="@+id/buttonGrabar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:text="Guardar"
-        app:layout_constraintBottom_toTopOf="@+id/btn_ver"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnActualizar" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -99,24 +88,23 @@
         android:id="@+id/btn_ver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="30dp"
         android:text="Ver datos"
         app:layout_constraintBottom_toTopOf="@+id/btn_eliminar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonGrabar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnActualizar" />
 
     <Button
         android:id="@+id/btnActualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="28dp"
         android:text="Actualizar Datos"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGrabar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Crear" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCrear" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

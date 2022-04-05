@@ -4,15 +4,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.example.app_sqlite.modelo.DBHelper;
-import com.example.app_sqlite.modelo.Persona;
 
 public class MainActivity extends AppCompatActivity {
     Button btnCrear, btnGrabar, btn_eliminar, btn_ver, btnactualizar;
@@ -24,64 +20,44 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnCrear=findViewById(R.id.Crear);
+        btnCrear=findViewById(R.id.btnCrear);
         btn_eliminar =findViewById(R.id.btn_eliminar);
         btn_ver=findViewById(R.id.btn_ver);
         btnactualizar=findViewById(R.id.btnActualizar);
         DB = new DBHelper(this);
 
         //grabar
-        btnGrabar= findViewById(R.id.buttonGrabar);
-        txtID= findViewById(R.id.editTextTextPersonID);
-        txtNombre= findViewById(R.id.editTextTextPersonNombre);
+
+        txtID= findViewById(R.id.txtId);
+        txtNombre= findViewById(R.id.txtNombre);
         txtTelefono= findViewById(R.id.txtTelefono);
+
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String id = txtID.getText().toString();
+                String nombre = txtNombre.getText().toString();
+                String telefono = txtTelefono.getText().toString();
 
 
-                   //crear Base de Datos
-
-                DBHelper dbHelper = new DBHelper(getApplicationContext());
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                if (db != null) {
-                    Toast.makeText(getApplicationContext(), "BASE CREADA", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(getApplicationContext(), "ERROR AL CREAR LA BASE", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-        //grabar
-        btnGrabar= findViewById(R.id.buttonGrabar);
-        txtID= findViewById(R.id.editTextTextPersonID);
-        txtNombre= findViewById(R.id.editTextTextPersonNombre);
-        txtTelefono= findViewById(R.id.txtTelefono);
-        btnGrabar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //grabar
-                Persona p =new Persona();
-                p.setId( Integer.parseInt( txtID.getText().toString()));
-                p.setNombre(txtNombre.getText().toString());
-                p.setTelefono(txtTelefono.getText().toString());
-                p.guardar(getApplicationContext());
-                Toast.makeText(getApplicationContext(), "Persona Creada", Toast.LENGTH_LONG).show();
-
-            }
-        });
+                Boolean checkinsertdata = DB.insertuserdata(id,nombre, telefono);
+                if(checkinsertdata==true)
+                    Toast.makeText(MainActivity.this, "Nuevos Datos Ingresados", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(MainActivity.this, "Datos no Ingresados", Toast.LENGTH_SHORT).show();
+            }        });
 
         // actualizar
 
         btnactualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String id = txtID.getText().toString();
                 String nombre = txtNombre.getText().toString();
-                String apellido = txtTelefono.getText().toString();
+                String telefono = txtTelefono.getText().toString();
 
-
-                Boolean checkupdatedata = DB.updateuserdata(nombre,apellido);
-                if(checkupdatedata==true)
+                Boolean update = DB.updateuserdata(id,nombre,telefono);
+                if(update==true)
                     Toast.makeText(MainActivity.this, "Datos Actualizados", Toast.LENGTH_SHORT).show();
                 else
                     Toast.makeText(MainActivity.this, "Datos no Actualizados", Toast.LENGTH_SHORT).show();
@@ -91,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
         btn_eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nombre = txtNombre.getText().toString();
-                Boolean checkudeletedata = DB.deletedata(nombre);
-                if(checkudeletedata==true)
+                String id = txtID.getText().toString();
+                Boolean delete = DB.deletedata(id);
+                if(delete==true)
                     Toast.makeText(MainActivity.this, "Datos Eliminados", Toast.LENGTH_SHORT).show();
                 else
                     Toast.makeText(MainActivity.this, "Datos no eliminados", Toast.LENGTH_SHORT).show();
